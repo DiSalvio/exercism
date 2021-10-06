@@ -1,9 +1,2 @@
 def abbreviate(words):
-    return ''.join(
-            map(lambda word: word[0], 
-                ''.join(filter(lambda char: char.isalpha() or char == ' ',
-                      list(words.replace('-', ' ')))
-                    )
-                .split()
-                )
-            ).upper()
+    return ''.join([c for c in words.replace('\'', '').title() if c.isupper()])
