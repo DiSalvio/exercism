@@ -2,11 +2,11 @@ ALLERGENS = ['eggs', 'peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocol
 
 class Allergies:
     def __init__(self, score):
-        self.allergies = [allergy for allergy in ALLERGENS if score & 2**ALLERGENS.index(allergy)]
+        self.score = score
 
     def allergic_to(self, item):
-        return item in self.allergies
+        return bool(self.score & 2**ALLERGENS.index(item))
 
     @property
     def lst(self):
-        return self.allergies
+        return [allergen for allergen in ALLERGENS if self.allergic_to(allergen)]
